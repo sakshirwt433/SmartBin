@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartBin - Reports</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    .report-card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .report-card h2 {
+      margin: 0 0 10px;
+      color: #444;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📊 SmartBin Reports</h1>
+
+  <!-- Summary Section -->
+  <div class="report-card">
+    <h2>Overall Summary</h2>
+    <p><b>Total Bins:</b> 10</p>
+    <p><b>Full Bins:</b> 8</p>
+    <p><b>Empty Bins:</b> 2</p>
+    <p><b>Average Fill Level:</b> 80%</p>
+  </div>
+
+  <!-- Detailed Report Table -->
+  <div class="report-card">
+    <h2>Detailed Report</h2>
+    <table>
+      <tr>
+        <th>Bin ID</th>
+        <th>Location</th>
+        <th>Fill Level (%)</th>
+        <th>Status</th>
+        <th>Last Collected</th>
+      </tr>
+      <tr>
+        <td>BIN001</td>
+        <td>Sector 12, Noida</td>
+        <td>75</td>
+        <td>Almost Full</td>
+        <td>2025-09-18 14:30</td>
+      </tr>
+      <tr>
+        <td>BIN002</td>
+        <td>Connaught Place</td>
+        <td>20</td>
+        <td>Empty</td>
+        <td>2025-09-19 09:10</td>
+      </tr>
+      <tr>
+        <td>BIN003</td>
+        <td>IIT Bombay Gate</td>
+        <td>95</td>
+        <td>Overflowing</td>
+        <td>2025-09-18 22:45</td>
+      </tr>
+      <tr>
+        <td>BIN004</td>
+        <td>Bandra Station</td>
+        <td>50</td>
+        <td>Half-Full</td>
+        <td>2025-09-19 08:15</td>
+      </tr>
+      <tr>
+        <td>BIN005</td>
+        <td>MG Road, Delhi</td>
+        <td>10</td>
+        <td>Empty</td>
+        <td>2025-09-19 07:50</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

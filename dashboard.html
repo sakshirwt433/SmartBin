@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        
+        :root {
+            --bg-color: lightskyblue;
+            --sidebar-color: rgba(0, 128, 0, 0.836);
+            --card-bg-color: #ffffff;
+            --primary-color: lightgreen;
+            --text-color: #2c3e50;
+            --subtle-text-color: #7f8c8d;
+            --border-color: #ecf0f1;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --bio-color: #2ecc71;
+            --non-bio-color: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* --- Dashboard Layout --- */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            background-color: var(--sidebar-color);
+            color: #ecf0f1;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-item {
+            color: inherit;
+            display: block;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar-item:hover {
+            background-color: var(--primary-color);
+            color: var(--card-bg-color);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            overflow-y: auto;
+        }
+
+        /* --- Top Section Cards --- */
+        .top-section {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1;
+            background-color: blue;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px var(--shadow-color);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--shadow-color);
+        }
+
+        .card h3 {
+            font-size: 1.1em;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        /* --- Middle Section Charts --- */
+        .middle-section {
+            display: flex;
+            gap: 20px;
+        }
+
+        .chart-card {
+            flex: 1;
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px var(--shadow-color);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .chart-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--shadow-color);
+        }
+
+        .chart-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .line-chart-placeholder {
+            height: 150px;
+            width: 100%;
+            background: linear-gradient(
+                90deg,
+                var(--bg-color) 0%,
+                var(--bg-color) 10%,
+                var(--primary-color) 10%,
+                var(--primary-color) 15%,
+                var(--bg-color) 15%,
+                var(--bg-color) 25%,
+                var(--primary-color) 25%,
+                var(--primary-color) 30%,
+                var(--bg-color) 30%,
+                var(--bg-color) 40%,
+                var(--primary-color) 40%,
+                var(--primary-color) 45%,
+                var(--bg-color) 45%,
+                var(--bg-color) 55%,
+                var(--primary-color) 55%,
+                var(--primary-color) 60%,
+                var(--bg-color) 60%,
+                var(--bg-color) 70%,
+                var(--primary-color) 70%,
+                var(--primary-color) 75%,
+                var(--bg-color) 75%
+            );
+            background-size: 100% 2px;
+            background-position: 0 bottom;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .line-chart-placeholder::after {
+            content: 'Monthly Collection Data';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-style: italic;
+            color: var(--subtle-text-color);
+        }
+
+        .pie-chart-placeholder {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--bio-color) 0% 30%,
+                var(--non-bio-color) 30% 80%
+            );
+            position: relative;
+        }
+
+        .pie-chart-placeholder::after {
+            content: '60% Bio, 40% Non-Bio';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--card-bg-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .alert-table-section {
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px var(--shadow-color);
+            padding: 25px;
+        }
+
+        .alert-table-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .alert-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .alert-table th, .alert-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .alert-table th {
+            background-color: var(--bg-color);
+            font-weight: 600;
+        }
+
+        .alert-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-icon {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .status-icon.completed {
+            color: var(--bio-color); 
+        }
+
+        .status-icon.pending {
+            color: var(--non-bio-color); 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <a href="dashboard.html" class="sidebar-item"><i class="fas fa-home"></i> Home</a>
+            <a href="Bins.html" target="_blank" class="sidebar-item"><i class="fas fa-trash"></i> Bins</a>
+            <a href="maps.html" target="_blank" class="sidebar-item"><i class="fas fa-map-marked-alt"></i> Map</a>
+            <a href="reports.html" target="_blank" class="sidebar-item"><i class="fas fa-chart-line"></i> Reports</a>
+            <a href="logs.html" taregt="_blank" class="sidebar-item"><i class="fas fa-clipboard-list"></i> Logs</a>
+        </div>
+
+        <div class="main-content">
+            <div class="top-section">
+                <div class="card">
+                    <h3>Total Bins</h3>
+                    <p>10</p>
+                </div>
+                <div class="card">
+                    <h3>Filled Bins</h3>
+                    <p>8</p>
+                </div>
+                <div class="card">
+                    <h3>Bio</h3>
+                    <p>3</p>
+                </div>
+                <div class="card">
+                    <h3>Non-Bio</h3>
+                    <p>5</p>
+                </div>
+            </div>
+
+            <div class="middle-section">
+                <div class="chart-card">
+                    <h3>Monthly Collection</h3>
+                    <div class="line-chart-placeholder"></div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Waste Classification</h3>
+                    <div class="pie-chart-placeholder"></div>
+                </div>
+            </div>
+
+            <div class="alert-table-section">
+                <h2>Alert Table:</h2>
+                <table class="alert-table">
+                    <thead>
+                        <tr>
+                            <th>Bin_id</th>
+                            <th>Location</th>
+                            <th>Alert Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#12345</td>
+                            <td>Central Park</td>
+                            <td>Full</td>
+                            <td><span class="status-icon completed">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>#12346</td>
+                            <td>Main Street</td>
+                            <td>Malfunction</td>
+                            <td><span class="status-icon pending">&#10006;</span></td>
+                        </tr>
+                        <tr>
+                            <td>#12347</td>
+                            <td>School Gate</td>
+                            <td>Full</td>
+                            <td><span class="status-icon completed">&#10003;</span></td>
+                        </tr>
+                        <tr>
+                            <td>#12348</td>
+                            <td>City Hall</td>
+                            <td>Malfunction</td>
+                            <td><span class="status-icon pending">&#10006;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
