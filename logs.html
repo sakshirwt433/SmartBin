@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>SmartBin - Logs</title>
   <style>
+    /* ... (Your CSS is correct and remains here) ... */
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
@@ -44,7 +45,6 @@
 
   <h1>📑 SmartBin Logs</h1>
 
-  <!-- Logs Table -->
   <div class="log-card">
     <h2>Activity Logs</h2>
     <table>
@@ -92,6 +92,45 @@
       </tr>
     </table>
   </div>
+
+  <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getFirestore, collection, addDoc } from "firebase/firestore";
+
+    const firebaseConfig = {
+        
+        apiKey: "AIzaSyBG_OdY7mGWXSBU_CTmHIflWDq9DCY4s7g", 
+        authDomain: "smartbin-87ea8.firebaseapp.com",
+        projectId: "smartbin-87ea8",
+        storageBucket: "smartbin-87ea8.firebasestorage.app",
+        messagingSenderId: "189248275372",
+        appId: "1:189248275372:web:3d3f5d5b9ea9de8e677009"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const logsCollection = collection(db, "logs");
+
+    
+    async function addLogToFirestore() {
+        const newLogData = {
+            binId: 201,
+            staffId: 5,
+            collectedAt: new Date(),
+            notes: "New collection log entry created via JS code."
+        };
+
+        try {
+            const docRef = await addDoc(logsCollection, newLogData);
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+    }
+    
+    
+    addLogToFirestore(); 
+  </script>
 
 </body>
 </html>
