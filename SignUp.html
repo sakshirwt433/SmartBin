@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartBin Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #22394a url('bgimage.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      width: 400px;
+      background:#064420;
+      text-align: center;
+      padding: 20px 30px 30px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .login-logo {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      background: #fff;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .login-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .login-title {
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .input-group i {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      color: #22394a;
+      font-size: 16px;
+    }
+    .input-group input {
+      width: 85%;
+      padding: 10px 10px 10px 36px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+    }
+    .input-group input:focus {
+      border-color: #064420;    
+      box-shadow: 0 0 5px rgba(6, 68, 32, 0.5);
+    }
+    .login-btn {
+      width: 60%;
+      padding: 12px;
+      background: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      margin: 15px auto 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover {
+      background: #b71c1c;
+    }
+    .login-footer {
+      color: #ccc;
+      font-size: 13px;
+      margin-top: 18px;
+      letter-spacing: 0.2px;
+    }
+    #msg {
+      color: yellow;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-logo">
+      <img src="Logo.jpeg" alt="Logo" >
+    </div>
+    <div class="login-title">Smart Waste, Smart Bin, Smarter Future</div>
+    
+    <!-- LOGIN FORM -->
+    <div class="input-group">
+      <i class="fa fa-user"></i>
+      <input id="email" type="email" placeholder="Email">
+    </div>
+    <div class="input-group">
+      <i class="fa fa-lock"></i>
+      <input id="password" type="password" placeholder="Password">
+    </div>
+    <button id="loginBtn" class="login-btn">Sign Up</button>
+    
+    <p id="msg"></p>
+    
+    <div class="login-footer">
+      Powered by AI for Cleaner Tomorrow
+    </div>
+  </div>
+  <script type="module" src="login.js"></script>
+</body>
+</html>
 
