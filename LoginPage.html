@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SmartBin Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -17,21 +18,22 @@
       justify-content: center;
     }
     .login-container {
-      width: 400px;
-      background:#064420;
+      width: 360px;
+      background: #064420;
       text-align: center;
-      padding: 20px 30px 30px 30px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
     .login-logo {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       margin-bottom: 15px;
       border-radius: 50%;
       background: #fff;
       display: inline-block;
       overflow: hidden;
+      border: 3px solid #fff;
     }
     .login-logo img {
       width: 100%;
@@ -40,104 +42,143 @@
     }
     .login-title {
       color: #fff;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
+      margin-bottom: 25px;
+      line-height: 1.4;
     }
+
+    /* Input Group Styling */
     .input-group {
       position: relative;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
     }
-    .input-group i {
+    .input-group i.fa-user, 
+    .input-group i.fa-lock {
       position: absolute;
       left: 12px;
-      top: 12px;
       color: #22394a;
       font-size: 16px;
+      pointer-events: none;
     }
     .input-group input {
-      width: 85%;
-      padding: 10px 10px 10px 36px;
+      width: 100%;
+      padding: 12px 40px 12px 40px; /* Left padding for user/lock, right for eye */
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 16px;
       outline: none;
+      box-sizing: border-box; /* Crucial for width calculation */
     }
     .input-group input:focus {
-      border-color: #064420;    
-      box-shadow: 0 0 5px rgba(6, 68, 32, 0.5);
+      border-color: #e53935;    
+      box-shadow: 0 0 8px rgba(229, 57, 53, 0.3);
     }
+
+    /* Eye Icon Specifics */
+    #togglePassword {
+      position: absolute;
+      right: 12px;
+      color: #666;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 18px;
+    }
+    #togglePassword:hover {
+      color: #22394a;
+    }
+
     .login-btn {
-      width: 60%;
+      width: 100%;
       padding: 12px;
       background: #e53935;
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 18px;
-      margin: 15px auto 0;
+      font-weight: bold;
+      margin-top: 10px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.3s;
     }
     .login-btn:hover {
       background: #b71c1c;
     }
-    .login-footer {
-      color: #ccc;
-      font-size: 13px;
-      margin-top: 18px;
-      letter-spacing: 0.2px;
+    
+    .signup-link {
+      margin-top: 20px;
+      color: #fff;
+      font-size: 14px;
+    }
+    .signup-link a {
+      color: #ffeb3b; /* Changed to yellow for better visibility on green */
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .signup-link a:hover {
+      text-decoration: underline;
     }
     #msg {
-      color: yellow;
+      color: #ffeb3b;
       font-size: 14px;
-      margin-top: 10px;
+      margin-top: 15px;
+      min-height: 1em;
+    }
+    .login-footer {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
     <div class="login-logo">
-      <img src="Logo.jpeg" alt="Logo" >
+      <img src="Logo.jpeg" alt="Logo">
     </div>
-    <div class="login-title">Smart Waste, Smart Bin, Smarter Future</div>
+    <div class="login-title">Smart Waste, Smart Bin,<br>Smarter Future</div>
     
-    <!-- LOGIN FORM -->
     <div class="input-group">
       <i class="fa fa-user"></i>
       <input id="email" type="email" placeholder="Email">
     </div>
+
     <div class="input-group">
       <i class="fa fa-lock"></i>
       <input id="password" type="password" placeholder="Password">
+      <i class="fa fa-eye" id="togglePassword"></i>
     </div>
+
     <button id="loginBtn" class="login-btn">Login</button>
+    
+    <div class="signup-link">
+        New user? <a id="toggleSignUp">Sign Up</a>
+    </div>
     
     <p id="msg"></p>
     
     <div class="login-footer">
-      Powered by AI for Cleaner Tomorrow
+      Powered by AI for a Cleaner Tomorrow
     </div>
   </div>
 
-  
-  <script type="module" src="login.js">
-    import { auth } from "./firebase.js";
-    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
 
-    document.getElementById("loginBtn").onclick = async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const pass = document.getElementById("password").value;
-
-      try {
-        await signInWithEmailAndPassword(auth, email, pass);
-        window.location.href = "dashboard.html"; 
-      } catch (e) {
-        document.getElementById("msg").innerText = "Error: " + e.message;
-      }
-    };
+    togglePassword.addEventListener('click', function () {
+      // Toggle type
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      
+      // Toggle icon
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
   </script>
+  <script type="module" src="LoginPage.js"></script>
 </body>
 </html>
