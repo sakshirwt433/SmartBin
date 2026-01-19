@@ -71,8 +71,8 @@ function loadMapData() {
                 }).addTo(map);
 
                 markers[id].bindPopup(`
-                    <div style="color: #333; font-family: sans-serif; min-width: 150px;">
-                        <b style="font-size: 14px;">🗑️ Bin: ${id.substring(0,6)}</b><br>
+                    <div style="color: #faf8f8; font-family: sans-serif; min-width: 150px;">
+                        <b style="font-size: 14px;">🗑️ Bin: ${data.binId || 'No ID set'}</b><br>
                         <hr style="border: 0; border-top: 1px solid #eee; margin: 5px 0;">
                         Level: <b style="color: ${color}">${level}%</b><br>
                         Status: <b>${(data.status || 'Active').toUpperCase()}</b><br>
